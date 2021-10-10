@@ -1,6 +1,6 @@
 import scrapy
 
-from yandere.items import PostItem
+from yandere.items import PostPageItem
 
 
 class PostSpider(scrapy.Spider):
@@ -20,6 +20,6 @@ class PostSpider(scrapy.Spider):
     def parse(self, response, **kwargs):
         posts = response.json()
         for post in posts:
-            item = PostItem()
+            item = PostPageItem()
             item['file_url'] = post['file_url']
             yield item

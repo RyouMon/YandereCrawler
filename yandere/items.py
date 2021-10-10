@@ -6,5 +6,5 @@
 import scrapy
 
 
-class PostItem(scrapy.Item):
+class PostPageItem(scrapy.Item):
     file_url = scrapy.Field()
