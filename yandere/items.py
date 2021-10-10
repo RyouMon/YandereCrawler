@@ -7,4 +7,4 @@ import scrapy
 
 
 class PostPageItem(scrapy.Item):
-    file_url = scrapy.Field()
+    file_urls = scrapy.Field()
