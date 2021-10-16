@@ -63,10 +63,10 @@ CONCURRENT_REQUESTS = 5
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'scrapy.pipelines.files.FilesPipeline': 1
+    'yandere.pipelines.YandereImagesPipeline': 1
 }
 
-FILES_STORE = 'files'
+IMAGES_STORE = 'images'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
