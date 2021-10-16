@@ -13,9 +13,12 @@ class PostSpider(scrapy.Spider):
     name = 'post'
     allowed_domains = ['yande.re']
 
-    def __init__(self, limit=100, page=1, tags='', **kwargs):
+    def __init__(self, limit=100, page=1, tags='', username='', vote=3, **kwargs):
         super().__init__(**kwargs)
-        self.start_urls = [f'https://yande.re/post.json?limit={limit}&page={page}&tags={tags}']
+        start_url = f'https://yande.re/post.json?limit={limit}&page={page}&tags={tags}'
+        if username and vote:
+            start_url += f' vote:{vote}:{username}'
+        self.start_urls = [start_url]
 
     def parse(self, response, **kwargs):
         posts = response.json()
