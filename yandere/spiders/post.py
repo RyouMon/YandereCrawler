@@ -1,6 +1,6 @@
 import scrapy
 
-from yandere.items import PostPageItem
+from yandere.items import PostItem
 
 
 class PostSpider(scrapy.Spider):
@@ -18,9 +18,8 @@ class PostSpider(scrapy.Spider):
         self.start_urls = [f'https://yande.re/post.json?limit={limit}&page={page}&tags={tags}']
 
     def parse(self, response, **kwargs):
-        item = PostPageItem()
-        item['file_urls'] = []
         posts = response.json()
         for post in posts:
-            item['file_urls'].append(post['file_url'])
-        yield item
+            item = PostItem()
+            item['file_url'] = post['file_url']
+            yield item
