@@ -5,9 +5,12 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
+from urllib.parse import unquote
+from scrapy.pipelines.images import ImagesPipeline
 
 
-class YanderePipeline:
-    def process_item(self, item, spider):
-        return item
+class YandereImagesPipeline(ImagesPipeline):
+
+    def file_path(self, request, response=None, info=None, *, item=None):
+        # Using original filename
+        return unquote(request.url.rsplit('/', 1)[-1])
